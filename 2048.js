@@ -257,18 +257,24 @@ var gameOver = false;
 spawnRandomNumberTwo(m);
 updateDivs(m, divs, colors);
 
-document.onkeydown = function(event) {
+
+window.onload = function(){
+    document.onkeydown = function(event) {
     if (gameOver) {
         return;
     }
     
-	switch (event.which) {
+    switch (event.which) {
     case 37:
     case 38:
     case 39:
     case 40:
         event.preventDefault();
-    	update(event.which - 37);
+        update(event.which - 37);
         break;
     }
-};
+    };
+
+      
+}
+
