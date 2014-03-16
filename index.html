@@ -3,34 +3,43 @@
     <title>2048</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="main.css">
-    <meta name="viewport" content="-width=device-width -initial-scale=1 -minimum-scale=1 -maximum-scale=1">
+    <meta name="viewport" content="width=device-width initial-scale=1 minimum-scale=1 maximum-scale=1">
  </head>
 <body>
-    <h1>2048</h1>
-    Score:
-    <span id="scoreSpan">0</span>
+    <div id="scoreSpan"><h1>2048Mobile</h1></div>
     <div id="gridDiv"></div>
-    <div id="gameOverDiv">Game over!</div>
-    <script type="text/javascript" src="2048.js"></script>
-    <script type="text/javascript" src="ai.js"></script>
+    <script type="text/javascript" src="js/2048.js"></script>
+    <script type="text/javascript" src="js/shake.js"></script>
     <script type="text/javascript">
     window.onload= function(){
         window.ondeviceorientation = function(e){
             var div = document.getElementById("main");
-            if (e.beta < -75 && Math.abs(e.gamma)<15 )
-              { update(3);
-               alert("down");};//屏幕上端向下
-            if (e.beta >  75 && Math.abs(e.gamma)<15  )
-              { update(1);
-              alert("up");};//屏幕上端向上
-            if (Math.abs(e.beta) < 15 && e.gamma > 75  )
-              { update(2);
-               alert("right");};//屏幕向右
-            if (Math.abs(e.beta) < 15 && e.gamma < -75  )
-              { update(0);
-              alert("left");};//屏幕向左
+            if (e.beta < -65 && Math.abs(e.gamma)<15 )
+              { update(1);};//屏幕上端向上
+            if (e.beta >  65 && Math.abs(e.gamma)<15  )
+              { update(3);};//屏幕上端向下
+            if (Math.abs(e.beta) < 15 && e.gamma > 65  )
+              { update(2);};//屏幕向右
+            if (Math.abs(e.beta) < 15 && e.gamma < -65  )
+              { update(0);};//屏幕向左
             };  
+        window.addEventListener('shake', shakeEventDidOccur, false);
+            function shakeEventDidOccur () {
+                if (gameOver = true) {
+                    restart();
+                } else{
+                    event.preventDefault();
+                };
+            
+        }
+
     }
     </script>
+    <footer class="footer" id="footer">
+      <div class="container">
+        <p>该游戏由kokdemo制作<a href="http://twitter.com/kokdemo" target="_blank">@kokdemo</a><p>如果你有好的意见或建议，请发送至github:
+        <a href="https://github.com/kokdemo/2048Mobile" target="_blank">2048Mobile</a></p>
+      </div>
+    </footer>
 </body>
 </html>

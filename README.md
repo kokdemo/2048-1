@@ -1,19 +1,24 @@
-# 2048
+#2048Mobile
+首先请原谅我起了这么一个土鳖的名字……
 
-A JavaScript clone of the game that might be known as "2048" (?). Unfortunately
-it does not feature any fancy visual effects, but it does include a simple AI
-that plays the game for you!
+#新的内容
+Q：这个2048与别的版本比如 http://gabrielecirulli.github.io/2048/ 有什么区别呢？
 
-## How to play
+A：这个版本的2048由 https://github.com/hagward/2048 改编而来。这个版本的2048的整体结构相对简单很多，不像原版的2048动画动作那么多啊什么的。
 
-Change the direction of gravity with the arrow keys. If two squares of the same
-value collides they will merge to one with the new value being the sum of the
-two. When no more moves are possible the game is over.
+Q：那我增加了那些新的内容呢？
 
-[Demo](https://dl.dropboxusercontent.com/u/334931/2048/index.html).
+A：首先，我把名字改了……其次，由于要在手机版本上有好的体验，于是就有了这些功能：
 
-To invoke the AI, fire up your favorite browsers developer tools and call the
-function `runAi(m, depth, waitTime)`, where `m` is the matrix representing the
-game, `depth` is how many steps the AI should simulate (this should be less
-than ten due to the inefficiency of the AI) and `waitTime` is the time (in ms)
-to wait between moves. For start, try `runAi(m, 6, 50)`.
+1. 支持触屏操作（原版也有，但是我fork的版本没有……）
+2. 支持重力感应（有一些敏感，可能会误操作……囧）
+3. 在gameover的时候，摇一摇就可以重开一盘。
+4. 颜色改鲜艳了一些。
+
+Q:未来还有什么更新呢？
+
+A:最高分，我希望能加入新的模式。
+
+#体验
+link： http://me.wocai.de/2048
+想要体验一下你的手机支持不支持 重力感应 http://me.xiuxiu.de/test/html

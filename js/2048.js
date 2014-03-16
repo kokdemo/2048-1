@@ -223,34 +223,49 @@ function update(direction) {
         return false;
     } else {
         score += subScore;
-        scoreSpan.innerHTML = score;
+        scoreSpan.innerHTML = "<div class='scoreSpan'>Score:"+score+"</div>";
         spawnRandomNumberTwo(m);
         updateDivs(m, divs, colors);
         if (!canMakeAMove(m)) {
-            gameOver = true;
-            gameOverDiv.style.visibility = 'visible';
+            gameover();
         }
         return true;
     }
 }
 
+//game over
+function gameover(){
+    gameOver = true;
+    divs[4].innerHTML = "G";
+
+    divs[5].innerHTML = "a";
+    divs[6].innerHTML = "m";
+    divs[7].innerHTML = "e";
+    divs[8].innerHTML = "O";
+    divs[9].innerHTML = "v";
+    divs[10].innerHTML = "e";
+    divs[11].innerHTML = "r";
+};
+
+
 var side = 4;
-var colors = ['aliceblue',
-              'antiquewhite',
-              'aquamarine',
-              'lightsalmon',
-              'lightgreen',
-              'darkseagreen',
-              'deeppink',
-              'deepskyblue',
-              'orangered',
-              'gold',
-              'slategray',
-              'steelblue'];
+var colors = ['#EEEF8C',
+              '#45B29D',
+              '#EFC94C',
+              '#E27A3F',
+              '#DF5A49',
+              '#b2d235',
+              '#decb00',
+              '#ffd400',
+              '#ffc20e',
+              '#e0861a',
+              '#c37e00',
+              '#69541b'];
 var m = createSquareMatrix(side);
 var divs = createDivGrid(document.getElementById('gridDiv'), side);
 var scoreSpan = document.getElementById('scoreSpan');
 var gameOverDiv = document.getElementById('gameOverDiv');
+var column = document.getElementsByClassName('column');
 var score = 0;
 var gameOver = false;
 
@@ -258,23 +273,58 @@ spawnRandomNumberTwo(m);
 updateDivs(m, divs, colors);
 
 
-window.onload = function(){
-    document.onkeydown = function(event) {
+//add touch listen
+var touchStartX, touchStartY;
+var toucher = document.getElementById("gridDiv");
+
+toucher.addEventListener("touchstart", function(event) {
+    if (event.touches.length > 1) return;
+
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+    event.preventDefault();
+});
+
+toucher.addEventListener("touchmove", function(event) {
+    event.preventDefault();
+});
+
+toucher.addEventListener("touchend", function(event) {
+    if (event.touches.length > 0) return;
+
+    var dx = event.changedTouches[0].clientX - touchStartX;
+    var absDx = Math.abs(dx);
+    var dy = event.changedTouches[0].clientY - touchStartY;
+    var absDy = Math.abs(dy);
+    if (Math.max(absDx, absDy) > 10) {
+        update(absDx > absDy ? (dx > 0 ? 2 : 0) : (dy > 0 ? 3 : 1));
+    }
+});
+
+//restart
+function restart(){
+    location.reload(false);
+};
+
+document.onkeydown = function(event) {
     if (gameOver) {
         return;
     }
-    
     switch (event.which) {
-    case 37:
-    case 38:
-    case 39:
-    case 40:
-        event.preventDefault();
-        update(event.which - 37);
-        break;
+        case 37:
+        case 38:
+        case 39:
+        case 40:
+            event.preventDefault();
+            update(event.which - 37);
+            break;
+        case 32:
+            event.preventDefault();
+            restart();
+            break;
     }
-    };
+};
 
-      
-}
+
+
 

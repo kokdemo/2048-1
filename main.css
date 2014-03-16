@@ -1,22 +1,35 @@
-
 body {
-    font: 1.5em Segoe UI, Tahoma, sans-serif;
     text-align: center;
+    background: #FFFFFF;
+    margin:0;
+}
+
+h1{
+    color: #00274C;
+    font:4em "微软雅黑", Geneva, sans-serif;
+   margin-top: 20px;
+margin-bottom: 10px;
+}
+
+.scoreSpan{
+    font:4em Tahoma, Geneva, sans-serif;
+    padding: 15px 0; 
 }
 
 .row {
-    width: 336px;
+    width: 390px;
     margin: 0 auto;
 }
 
 .column {
-    width: 76px;
-    padding: 20px 0;
+    font: 2.7em Segoe UI, Tahoma, sans-serif;
+    width: 22.5%;
+    padding: 13px 0;
     float: left;
     display: block;
     margin: 2px;
-    border: 2px solid aliceblue;
-    border-radius: 4px;
+    border: 2px solid #99CCCC;
+    border-radius: 6px;
 }
 
 .clear {
@@ -27,7 +40,60 @@ body {
     margin-top: 10px;
 }
 
-#gameOverDiv {
-    color: red;
-    visibility: hidden;
+
+footer{
+    font-family: "微软雅黑";
+      padding: 10px 0px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #dddddd;
+  width:100%;position:absolute;bottom:0px;left:0px;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+@media screen and (max-width:500px){
+    body {
+    text-align: center;
+    background: #FFFFFF;
+    margin:0;
+}
+
+h1{
+    font: 3.5em Segoe UI, Tahoma, sans-serif;
+    padding: 10px 0; 
+}
+
+.scoreSpan{
+    font: 3.5em Segoe UI, Tahoma, sans-serif;
+    padding: 20px 0; 
+}
+
+.row {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.column {
+    font: 2.7em Segoe UI, Tahoma, sans-serif;
+    width: 22%;
+    padding: 3.5% 0;
+    float: left;
+    display: block;
+    margin: 2px;
+    border: 2px solid #99CCCC;
+    border-radius: 6px;
+}
+
+.clear {
+    clear: both;
+}
+
+#gridDiv {
+    width: 100%;
+    margin-top: 10px;
+}
+
+footer{
+    display: none;
+}
 }
